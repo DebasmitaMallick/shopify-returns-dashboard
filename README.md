@@ -1,3 +1,7 @@
+I’ve carefully reviewed your README markdown, and the main **formatting issue** is with the **triple backticks** at the top and the `bash` block around your clone command — right now, GitHub may interpret some extra backticks incorrectly, creating blank copy boxes.
+
+Here’s a **fully corrected and polished version**, ready to paste into GitHub:
+
 ````markdown
 # Shopify Returns & Exchanges Dashboard 
 
@@ -56,7 +60,7 @@ npm run dev
 
 ---
 
-## Architecture Decisions
+## 🏗 Architecture Decisions
 
 * **Mock API Layer (`services/api.ts`)** – Simulates backend calls with promises and timeout delays, separating **data logic** from UI.
 * **Custom Hooks**
@@ -102,22 +106,27 @@ In a production Shopify app:
    * **Embedded** – Runs inside Shopify admin using App Bridge.
    * **Standalone** – Runs independently (current approach), can support multiple shops and internal dashboards.
 
-
 ---
 
 ## 📸 Screenshots & Demo
 
 ### Dashboard View
-![Dashboard Screenshot](image.png)
+
+![Dashboard Screenshot](screenshots/dashboard.png)
 
 ### Request Details Modal
-![Request Modal Screenshot](image-1.png)
+
+![Request Modal Screenshot](screenshots/request-modal.png)
 
 ### Toast Notifications
-![Toast Notification Screenshot](image-2.png)
+
+![Toast Notification Screenshot](screenshots/toast-notification.png)
 
 ### Demo Video
+
 [Watch the demo video](https://youtu.be/7E26WvFJusI)
 
 > The video demonstrates switching stores, filtering requests, updating request status, pagination, and toast notifications in action.
-```
+
+`````
+
