@@ -102,8 +102,7 @@ In a production Shopify app:
    * **Embedded** – Runs inside Shopify admin using App Bridge.
    * **Standalone** – Runs independently (current approach), can support multiple shops and internal dashboards.
 
-
----
+```markdown
 
 ## 📸 Screenshots & Demo
 
@@ -120,4 +119,4 @@ In a production Shopify app:
 [Watch the demo video](https://youtu.be/7E26WvFJusI)
 
 > The video demonstrates switching stores, filtering requests, updating request status, pagination, and toast notifications in action.
-```
+
