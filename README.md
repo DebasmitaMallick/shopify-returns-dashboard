@@ -102,7 +102,7 @@ In a production Shopify app:
    * **Embedded** – Runs inside Shopify admin using App Bridge.
    * **Standalone** – Runs independently (current approach), can support multiple shops and internal dashboards.
 
-```markdown
+```
 
 ## 📸 Screenshots & Demo
 
