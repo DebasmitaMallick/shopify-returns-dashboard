@@ -1,5 +1,4 @@
-````markdown
-# Shopify Returns & Exchanges Dashboard 
+# Shopify Returns & Exchanges Dashboard
 
 A **standalone React + TypeScript dashboard** simulating a Shopify merchant interface for managing return and exchange requests across multiple stores.
 
@@ -9,12 +8,12 @@ A **standalone React + TypeScript dashboard** simulating a Shopify merchant inte
 
 ## 🛠 Tech Stack
 
-- **React + TypeScript**
-- **Vite**
-- **Tailwind CSS**
-- **React Router**
-- **Custom Hooks:** `useRequests`, `useToast`
-- **Mock API:** `services/api.ts`
+* **React + TypeScript**
+* **Vite**
+* **Tailwind CSS**
+* **React Router**
+* **Custom Hooks:** `useRequests`, `useToast`
+* **Mock API:** `services/api.ts`
 
 > No Shopify App Bridge or authentication — this is a **standalone simulation**.
 
@@ -22,12 +21,14 @@ A **standalone React + TypeScript dashboard** simulating a Shopify merchant inte
 
 ## 📦 Features
 
-1. **Store Selector** – Switch between multiple Shopify stores (e.g., `demo-store.myshopify.com`, `fashion-hub.myshopify.com`).
-2. **Returns & Exchanges Dashboard** – View request list with filters (`Request Type`, `Status`) and search (`Order ID`, `Customer Name`).
-3. **Request Details & Actions** – Open modal for details, approve/reject/complete actions with **valid state transitions**.
-4. **Pagination** – Client-side pagination for better UX with many requests.
-5. **Toast Notifications** – Feedback for every action (approve/reject/complete).
-6. **Responsive UI** – Clean, usable on mobile and desktop.
+1. **Store Selector** – Switch between multiple Shopify stores
+   (e.g., `demo-store.myshopify.com`, `fashion-hub.myshopify.com`)
+2. **Returns & Exchanges Dashboard** – View request list with filters
+   (`Request Type`, `Status`) and search (`Order ID`, `Customer Name`)
+3. **Request Details & Actions** – Open modal for details, approve / reject / complete actions with **valid state transitions**
+4. **Pagination** – Client-side pagination for better UX with large datasets
+5. **Toast Notifications** – Feedback for every action (approve / reject / complete)
+6. **Responsive UI** – Optimized for desktop and mobile
 
 ---
 
@@ -36,9 +37,9 @@ A **standalone React + TypeScript dashboard** simulating a Shopify merchant inte
 1. Clone the repository:
 
 ```bash
-git clone <repo-url>
-cd valetpe-returns-dashboard
-````
+git clone https://github.com/<your-username>/shopify-returns-dashboard.git
+cd shopify-returns-dashboard
+```
 
 2. Install dependencies:
 
@@ -56,21 +57,48 @@ npm run dev
 
 ---
 
-## 🏗 Architecture Decisions
+## 🧠 Architecture Decisions
 
-* **Mock API Layer (`services/api.ts`)** – Simulates backend calls with promises and timeout delays, separating **data logic** from UI.
-* **Custom Hooks**
+### Mock API Layer
 
-  * `useRequests` – Fetch, filter, search, and paginate requests; keeps components focused on presentation.
-  * `useToast` – Global toast notifications for user feedback.
-* **Component Design**
+* `services/api.ts` simulates backend behavior using Promises and timeout delays
+* Separates **data logic** from UI
+* Can be replaced with real APIs without UI changes
 
-  * `RequestTable` – Displays paginated requests.
-  * `RequestDetailsModal` – Shows details & actions.
-  * `Pagination` – Reusable pagination component.
-  * `StoreSelector` – Manages multi-store context.
-* **State Management** – Local state + React hooks; global context only for **toasts**, keeping it lightweight.
-* **TypeScript First** – Strict typing with union types and interfaces for all entities (`ReturnExchangeRequest`, `RequestStatus`, `RequestType`).
+### Custom Hooks
+
+* **`useRequests`**
+
+  * Fetches requests by shop
+  * Handles filtering, search, and pagination
+  * Keeps components focused on presentation
+* **`useToast`**
+
+  * Centralized toast notification system
+  * Provides consistent UX feedback
+
+### Component Structure
+
+* `RequestTable` – Displays paginated requests
+* `RequestDetailsModal` – Shows request details and actions
+* `Pagination` – Reusable pagination component
+* `StoreSelector` – Manages multi-store context
+
+### State Management
+
+* Local state with React hooks
+* Global context only for toast notifications
+* Lightweight and easy to reason about
+
+### TypeScript-First Approach
+
+* Strong typing with interfaces and union types
+* Core entities:
+
+  * `ReturnExchangeRequest`
+  * `RequestStatus`
+  * `RequestType`
+* Prevents invalid state transitions at compile time
 
 ---
 
@@ -78,29 +106,44 @@ npm run dev
 
 In a production Shopify app:
 
-1. **OAuth Flow**
+### 1. OAuth Flow
 
-   * Handled by the backend.
-   * On install, Shopify provides a **shop domain** and **access token**.
-   * Frontend only talks to backend APIs with shop-specific credentials.
+* Handled by the backend
+* Shopify provides:
 
-2. **API Communication**
+  * Shop domain
+  * Access token
+* Frontend communicates only with authenticated backend APIs
 
-   * Backend exposes endpoints for:
+### 2. API Communication
 
-     * Fetching requests by shop (`GET /requests?shop=demo-store`)
-     * Updating request status (`PATCH /requests/:id`)
-   * Frontend calls these endpoints instead of the mock API.
+Backend endpoints replace the mock API:
 
-3. **Webhooks**
+* `GET /requests?shop=demo-store.myshopify.com`
+* `PATCH /requests/:id`
 
-   * Shopify webhooks can notify the backend about new orders, returns, or exchanges.
-   * Backend updates the database, which the frontend then fetches.
+Frontend logic remains unchanged.
 
-4. **Embedded vs Standalone**
+### 3. Webhooks
 
-   * **Embedded** – Runs inside Shopify admin using App Bridge.
-   * **Standalone** – Runs independently (current approach), can support multiple shops and internal dashboards.
+* Shopify webhooks notify backend of:
+
+  * New orders
+  * Return / exchange events
+* Backend updates the database
+* Frontend fetches the latest data
+
+### 4. Embedded vs Standalone
+
+* **Embedded App**
+
+  * Runs inside Shopify Admin
+  * Uses Shopify App Bridge
+* **Standalone App (current)**
+
+  * Runs independently
+  * Supports multiple shops
+  * Suitable for internal dashboards
 
 ---
 
@@ -118,11 +161,8 @@ In a production Shopify app:
 
 ![Toast Notification Screenshot](screenshots/toast-notification.png)
 
-### Demo Video
+### 🎥 Demo Video
 
 [Watch the demo video](https://youtu.be/7E26WvFJusI)
 
-> The video demonstrates switching stores, filtering requests, updating request status, pagination, and toast notifications in action.
-
-`````
-
+> The demo shows store switching, filtering, request status updates, pagination, and toast notifications.
