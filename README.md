@@ -120,6 +120,4 @@ In a production Shopify app:
 [Watch the demo video](https://youtu.be/7E26WvFJusI)
 
 > The video demonstrates switching stores, filtering requests, updating request status, pagination, and toast notifications in action.
-
-
 ```
