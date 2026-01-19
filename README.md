@@ -1,7 +1,3 @@
-I’ve carefully reviewed your README markdown, and the main **formatting issue** is with the **triple backticks** at the top and the `bash` block around your clone command — right now, GitHub may interpret some extra backticks incorrectly, creating blank copy boxes.
-
-Here’s a **fully corrected and polished version**, ready to paste into GitHub:
-
 ````markdown
 # Shopify Returns & Exchanges Dashboard 
 
